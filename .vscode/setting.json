@@ -1,0 +1,14 @@
+{
+  "javascript.validate.enable": false,
+  "javascript.format.enable": false,
+  "standard.enable": false,
+  "standard.options": {},
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.mergeEditor": false,
+  "files.associations": {
+    "app.css": "tailwindcss"
+  }
+}
