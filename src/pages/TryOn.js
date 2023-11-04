@@ -1,40 +1,36 @@
-import Layout from "../component/Layout";
+import { useState } from 'react'
+import Layout from '../component/Layout'
+import BackendWebcam from '../template/BackendWebcam'
 
 export default function TryOn() {
-    return (
-        <Layout>
-            <div className="flex flex-col items-center">
-                <div className="flex flex-shrink-0  bg-black w-[600px] mb-8">
-                    <div className="flex bg-transparent p-40" />
-                </div>
-                <div className="flex flex-col justify-center items-center gap-2">
-                    <p className="text-md font-bold">
-                        Make Up
-                    </p>
-                    <div className="flex flex-row justify-center items-center gap-3">
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                    </div>
+  const [cameraOn, setCameraOn] = useState(false)
 
-                    <p className="text-md font-bold">
-                        Shade Tersedia
-                    </p>
-                    <div className="flex flex-row justify-center items-center gap-3">
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                        <button className="border rounded-full bg-gray-300 w-[40px] h-[40px]" />
-                    </div>
-                </div>
-            </div>
-        </Layout>
-    )
+  const handleCamera = () => {
+    setCameraOn(!cameraOn)
+  }
+
+  return (
+    <Layout>
+      <div className='flex flex-col items-center'>
+        {cameraOn ? (
+          <div className='flex flex-col'>
+            <iframe
+              src='http://localhost:5000/video_feed'
+              title='Video Feed'
+              width='600'
+              height='380'
+              frameBorder='0'
+              allowFullScreen
+            />
+            <button onClick={() => handleCamera()}> Close Camera </button>
+          </div>
+        ) : (
+          <div className='flex flex-col w-[600px] h-[380px]'>
+            <div className='flex bg-black' />
+            <button onClick={() => handleCamera()}> Open Camera </button>
+          </div>
+        )}
+      </div>
+    </Layout>
+  )
 }
