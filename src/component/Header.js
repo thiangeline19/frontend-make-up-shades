@@ -1,6 +1,26 @@
 import { Link } from "react-router-dom";
 
-export default function Header(props) {
+export default function Header({ disableButton }) {
+
+  if (disableButton) {
+    return (
+      <div className="w-full bg-white shadow-md z-[1]">
+        <div className='flex flex-row items-center justify-between py-3 w-[1200px] xl:w-[1280px] mx-auto'>
+          <div className='flex flex-grow justify-center py-7 px-6'>
+            <p className='font-bold text-2xl cursor-not-allowed'>Sistem Pemilihan Shade Alat Make Up</p>
+          </div>
+          <div className='flex flex-grow flex-row justify-end gap-24 py-7 px-6'>
+            <p className='text-base text-teal-600 cursor-not-allowed'>Beranda</p>
+            <p className='text-base text-teal-600 cursor-not-allowed'>Tutorial</p>
+            <p className='text-base text-teal-600 cursor-not-allowed'>Try-On</p>
+            <p className='text-base text-teal-600 cursor-not-allowed'>About Me</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+
   return (
     <div className="w-full bg-white shadow-md z-[1]">
       <div className='flex flex-row items-center justify-between py-3 w-[1200px] xl:w-[1280px] mx-auto'>
